@@ -1,0 +1,174 @@
+CREATE TABLE Compte(
+   ID_user SMALLINT,
+   pwd VARCHAR(50) NOT NULL,
+   nom_user VARCHAR(50),
+   pnom_user VARCHAR(50),
+   date_n DATE,
+   email VARCHAR(50) NOT NULL,
+   PRIMARY KEY(ID_user),
+   UNIQUE(pwd),
+   UNIQUE(email)
+);
+
+CREATE TABLE CAF(
+   ID_caf VARCHAR(50),
+   adresse VARCHAR(50),
+   numero_tele VARCHAR(50),
+   email VARCHAR(50),
+   les_servises VARCHAR(50),
+   PRIMARY KEY(ID_caf)
+);
+
+CREATE TABLE AM(
+   ID_AM VARCHAR(50),
+   adresse VARCHAR(50),
+   numero_tele INT,
+   email VARCHAR(50),
+   les_services VARCHAR(50),
+   PRIMARY KEY(ID_AM)
+);
+
+CREATE TABLE Sous_pref(
+   ID_pref VARCHAR(50),
+   adresse VARCHAR(50),
+   numero_tele VARCHAR(50),
+   email VARCHAR(50),
+   les_services VARCHAR(50),
+   PRIMARY KEY(ID_pref)
+);
+
+CREATE TABLE Crous(
+   ID_crous VARCHAR(50),
+   adresse VARCHAR(50),
+   numero_tele VARCHAR(50),
+   email VARCHAR(50),
+   les_servises VARCHAR(50),
+   les_logement_gérer SMALLINT,
+   PRIMARY KEY(ID_crous)
+);
+
+CREATE TABLE crous_cite(
+   ID_cite INT,
+   nom_c VARCHAR(50),
+   adress_c VARCHAR(50),
+   email VARCHAR(50),
+   logement_prop VARCHAR(50),
+   ID_crous VARCHAR(50) NOT NULL,
+   PRIMARY KEY(ID_cite),
+   FOREIGN KEY(ID_crous) REFERENCES Crous(ID_crous)
+);
+
+CREATE TABLE logement_prop(
+   ID_logp SMALLINT,
+   Prix CURRENCY,
+   type VARCHAR(50),
+   surface REAL,
+   Equipements VARCHAR(50),
+   PRIMARY KEY(ID_logp)
+);
+
+CREATE TABLE servise_AM(
+   ID_service VARCHAR(50),
+   lib_servise VARCHAR(50),
+   documents_ VARCHAR(50),
+   PRIMARY KEY(ID_service)
+);
+
+CREATE TABLE servise_pref(
+   ID_service VARCHAR(50),
+   lib_service VARCHAR(50),
+   documents_ VARCHAR(50),
+   PRIMARY KEY(ID_service)
+);
+
+CREATE TABLE les_aides(
+   ID_aide VARCHAR(50),
+   type_aide VARCHAR(50),
+   Documents VARCHAR(50),
+   PRIMARY KEY(ID_aide)
+);
+
+CREATE TABLE Docs(
+   ID_doc VARCHAR(50),
+   lib_doc VARCHAR(50),
+   PRIMARY KEY(ID_doc)
+);
+
+CREATE TABLE services_crous(
+   ID_serv_c VARCHAR(50),
+   lib_serv_c VARCHAR(50),
+   document VARCHAR(50),
+   PRIMARY KEY(ID_serv_c)
+);
+
+CREATE TABLE checklist(
+   IDchek VARCHAR(50),
+   APL LOGICAL,
+   SSN LOGICAL,
+   CV LOGICAL,
+   CSS LOGICAL,
+   TDS LOGICAL,
+   PRIMARY KEY(IDchek)
+);
+
+CREATE TABLE présenter(
+   ID_cite INT,
+   ID_logp SMALLINT,
+   PRIMARY KEY(ID_cite, ID_logp),
+   FOREIGN KEY(ID_cite) REFERENCES crous_cite(ID_cite),
+   FOREIGN KEY(ID_logp) REFERENCES logement_prop(ID_logp)
+);
+
+CREATE TABLE Offrir(
+   ID_AM VARCHAR(50),
+   ID_service VARCHAR(50),
+   PRIMARY KEY(ID_AM, ID_service),
+   FOREIGN KEY(ID_AM) REFERENCES AM(ID_AM),
+   FOREIGN KEY(ID_service) REFERENCES servise_AM(ID_service)
+);
+
+CREATE TABLE proposer(
+   ID_pref VARCHAR(50),
+   ID_service VARCHAR(50),
+   PRIMARY KEY(ID_pref, ID_service),
+   FOREIGN KEY(ID_pref) REFERENCES Sous_pref(ID_pref),
+   FOREIGN KEY(ID_service) REFERENCES servise_pref(ID_service)
+);
+
+CREATE TABLE ACCORDER(
+   ID_caf VARCHAR(50),
+   ID_aide VARCHAR(50),
+   PRIMARY KEY(ID_caf, ID_aide),
+   FOREIGN KEY(ID_caf) REFERENCES CAF(ID_caf),
+   FOREIGN KEY(ID_aide) REFERENCES les_aides(ID_aide)
+);
+
+CREATE TABLE Offrir_1(
+   ID_crous VARCHAR(50),
+   ID_serv_c VARCHAR(50),
+   PRIMARY KEY(ID_crous, ID_serv_c),
+   FOREIGN KEY(ID_crous) REFERENCES Crous(ID_crous),
+   FOREIGN KEY(ID_serv_c) REFERENCES services_crous(ID_serv_c)
+);
+
+CREATE TABLE Demander(
+   ID_service VARCHAR(50),
+   ID_service_1 VARCHAR(50),
+   ID_aide VARCHAR(50),
+   ID_doc VARCHAR(50),
+   ID_serv_c VARCHAR(50),
+   PRIMARY KEY(ID_service, ID_service_1, ID_aide, ID_doc, ID_serv_c),
+   FOREIGN KEY(ID_service) REFERENCES servise_AM(ID_service),
+   FOREIGN KEY(ID_service_1) REFERENCES servise_pref(ID_service),
+   FOREIGN KEY(ID_aide) REFERENCES les_aides(ID_aide),
+   FOREIGN KEY(ID_doc) REFERENCES Docs(ID_doc),
+   FOREIGN KEY(ID_serv_c) REFERENCES services_crous(ID_serv_c)
+);
+
+CREATE TABLE Faire(
+   ID_user SMALLINT,
+   IDchek VARCHAR(50),
+   PRIMARY KEY(ID_user, IDchek),
+   FOREIGN KEY(ID_user) REFERENCES Compte(ID_user),
+   FOREIGN KEY(IDchek) REFERENCES checklist(IDchek)
+);

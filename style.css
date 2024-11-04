@@ -6,10 +6,10 @@
 }
 body{
     background-color: #c9d6ff;
-    background:linear-gradient(to right,#e2e2e2,#c9d6ff);
+    background:linear-gradient(to right,#004d66,#67a5b3);
 }
 .container{
-    background:#fff;
+    background:#edeaea;
     width:450px;
     padding:1.5rem;
     margin:50px auto;
@@ -42,15 +42,12 @@ input{
 }
 .input-group i{
     position:absolute;
-    color:black;
+    color:#223f46;
 }
 input:focus{
     background-color: transparent;
     outline:transparent;
-    border-bottom:2px solid hsl(327,90%,28%);
-}
-input::placeholder{
-    color:transparent;
+    border-bottom:2px solid hsl(0, 100%, 50%);
 }
 label{
     color:#757575;
@@ -73,7 +70,7 @@ input:focus~label,input:not(:placeholder-shown)~label{
 }
 .recover a{
     text-decoration:none;
-    color:rgb(0, 0, 255);
+    color:rgb(1, 1, 40);
 }
 .recover a:hover{
     color:blue;
@@ -86,7 +83,7 @@ input:focus~label,input:not(:placeholder-shown)~label{
     outline:none;
     border:none;
     width:100%;
-    background:rgb(125,125,235);
+    background:#67a5b3;
     color:white;
     cursor:pointer;
     transition:0.9s;
@@ -103,19 +100,19 @@ input:focus~label,input:not(:placeholder-shown)~label{
     text-align:center;
 }
 .icons i{
-    color:rgb(125,125,235);
+    color:#67a5b3;
     padding:0.8rem 1.5rem;
     border-radius:10px;
     font-size:1.5rem;
     cursor:pointer;
-    border:2px solid #dfe9f5;
+    border:2px solid #010810;
     margin:0 15px;
     transition:1s;
 }
 .icons i:hover{
     background:#07001f;
     font-size:1.6rem;
-    border:2px solid rgb(125,125,235);
+    border:2px solid #67a5b3
 }
 .links{
     display:flex;
@@ -125,7 +122,7 @@ input:focus~label,input:not(:placeholder-shown)~label{
     font-weight:bold;
 }
 button{
-    color:rgb(125,125,235);
+    color:#67a5b3;
     border:none;
     background-color:transparent;
     font-size:1rem;
@@ -134,4 +131,11 @@ button{
 button:hover{
     text-decoration:underline;
     color:blue;
+}
+.logo-img {
+    width: 60px; /* Adjust width and height as needed */
+    height: 60px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
 }

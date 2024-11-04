@@ -1,13 +1,12 @@
-const signUpButton=document.getElementById('signUpButton');
-const signInButton=document.getElementById('signInButton');
-const signInForm=document.getElementById('signIn');
-const signUpForm=document.getElementById('signup');
+<script>
+        // JavaScript to toggle between Sign Up and Sign In forms
+        document.getElementById("signInButton").addEventListener("click", function() {
+            document.getElementById("Signup").style.display = "none";
+            document.getElementById("sign").style.display = "block";
+        });
 
-signUpButton.addEventListener('click',function(){
-    signInForm.style.display="none";
-    signUpForm.style.display="block";
-})
-signInButton.addEventListener('click', function(){
-    signInForm.style.display="block";
-    signUpForm.style.display="none";
-})
+        document.getElementById("signUPButton").addEventListener("click", function() {
+            document.getElementById("Signup").style.display = "block";
+            document.getElementById("sign").style.display = "none";
+        });
+    </script>

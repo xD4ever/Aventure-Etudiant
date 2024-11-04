@@ -8,77 +8,84 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container" id="Signup" style="display: none;">
-        <h1 class="form-title">Sign Up</h1>
+    <div class="container" id="Signup" style="display: block;">
+        <h1 class="form-title"><img src="logo.jpg" class="logo-img"> <br> Sign Up</h1>
         <form method="post" action="">
-            <div class="input-groupe">
-                <i  class="fas fa-user"></i>
+            <div class="input-group">
+                <i class="fas fa-user"></i>
                 <input type="text" name="f-name" id="fname" placeholder="First name" required>
             </div>
             <br>
-            <div class="input-groupe">
-                <i  class="fas fa-user"></i>
+            <div class="input-group">
+                <i class="fas fa-user"></i>
                 <input type="text" name="l-name" id="lname" placeholder="Last name" required>
             </div>
             <br>
-            <div class="input-groupe">
-                <i  class="fas fa-envelope"></i>
-                <input type="email" name="email" id="email" placeholder="email" required>
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" id="email" placeholder="Email" required>
             </div>
             <br>
-            <div class="input-groupe">
-                <i  class="fas fa-lock"></i>
-                <input type="password" name="password" id="password" placeholder="password" required>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" id="password" placeholder="Password" required>
             </div>
             <br>
-            <input type="submit" class="btn" value="signup" name="signup">
+            <input type="submit" class="btn" value="Sign Up" name="signup">
         </form>
-        <p class="or">
-            --------or--------
-        </p>
+        <p class="or">--------or--------</p>
         <div class="icons">
             <i class="fab fa-google"></i>
             <i class="fab fa-facebook"></i>
             <i class="fab fa-github"></i>
         </div>
         <div class="icons">
-            <p>Already have an account ?</p>
+            <p>Already have an account?</p>
             <button id="signInButton">Sign In</button>
         </div>
     </div>
 
-
-    <div class="container" id="Sign">
+    <div class="container" id="sign" style="display: none;">
         <h1 class="form-title">Sign In</h1>
         <form method="post" action="">
-            <div class="input-groupe">
-                <i  class="fas fa-envelope"></i>
-                <input type="email" name="email" id="email" placeholder="email" required>
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" id="email" placeholder="Email" required>
             </div>
             <br>
-            <div class="input-groupe">
-                <i  class="fas fa-lock"></i>
-                <input type="password" name="password" id="password" placeholder="password" required>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" id="password" placeholder="Password" required>
             </div>
             <p class="recover">
                 <a href="#">Recover password</a>
             </p>
             <br>
-            <input type="submit" class="btn" value="sign-in" name="signin">
+            <input type="submit" class="btn" value="Sign In" name="signin">
         </form>
-        <p class="or">
-            --------or--------
-        </p>
+        <p class="or">--------or--------</p>
         <div class="icons">
             <i class="fab fa-google"></i>
             <i class="fab fa-facebook"></i>
             <i class="fab fa-github"></i>
         </div>
         <div class="icons">
-            <p>Don't have an account ?</p>
+            <p>Don't have an account?</p>
             <button id="signUPButton">Sign Up</button>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        //JS
+        document.getElementById("signInButton").addEventListener("click", function() {
+            document.getElementById("Signup").style.display = "none";
+            document.getElementById("sign").style.display = "block";
+        });
+
+        document.getElementById("signUPButton").addEventListener("click", function() {
+            document.getElementById("Signup").style.display = "block";
+            document.getElementById("sign").style.display = "none";
+        });
+    </script>
 </body>
 </html>
