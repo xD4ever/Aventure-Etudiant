@@ -2,3 +2,8 @@
     text-decoration: underline;
     font-weight: bold;
 }
+
+.pdf{
+    width: 100%;
+    height: 60%;
+}
